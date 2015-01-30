@@ -1,0 +1,13 @@
+{
+  "name": "publications",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "bibtex-parser": "0.0.0",
+    "minimist": "^1.1.0",
+    "underscore": "^1.7.0"
+  }
+}
