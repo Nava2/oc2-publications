@@ -2,6 +2,7 @@ var parse = require("bibtex-parser");
 var minimist = require("minimist");
 var _ = require("underscore");
 var fs = require('fs');
+var path = require('path');
 
 
 var argv = minimist(process.argv.slice(2), {
@@ -28,20 +29,27 @@ fs.readFile(argv.j, 'utf8', function (err, data) {
     }
 
     var bibtexObj = parse(data);
-    var outputFile = argv._[0];
+    var outPath = path.normalize(argv._[0]);
 
     var output = {
         "journals": bibtexObj
     };
 
-    log("Writing to: " + outputFile);
+    log("Writing to: " + outPath);
     log(JSON.stringify(output, null, '  '));
 
-    fs.writeFile(argv._[0], JSON.stringify(output), function (err) {
+    fs.mkdir(path.dirname(outPath), function (err) {
         if (err) {
-            throw err;
+            console.log(err);
         }
 
-        console.log("Completed writing file: " + outputFile);
+        fs.writeFile(outPath, JSON.stringify(output), function (err) {
+            if (err) {
+                throw err;
+            }
+
+            console.log("Completed writing file: " + outPath);
+        })
     })
+
 });

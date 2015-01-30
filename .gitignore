@@ -4,6 +4,8 @@
 # intellij
 .idea
 
+test/output.json
+
 # Logs
 logs
 *.log
