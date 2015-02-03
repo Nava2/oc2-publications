@@ -4,7 +4,8 @@
 # intellij
 .idea
 
-test/output.json
+www/publications/
+**/output.json
 
 # Logs
 logs
