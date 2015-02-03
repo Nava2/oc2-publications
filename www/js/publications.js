@@ -78,11 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }).addClass('pub-journal'));
 
             // year:
-            date = undefined;
-            if (_.isString(obj.year) && obj.year.length > 2) {
-                date = new Date(Date.UTC.call(this, Number(obj.year)+1));
-            }
-            row.append($('<td/>', { html : _.isUndefined(date) ? '' : date.format('Y') }).addClass('pub-date'));
+            row.append($('<td/>', { html : _.isUndefined(obj.year) ? '' : obj.year }).addClass('pub-date'));
 
             row.append($('<td/>', {
                 html : _.isUndefined(obj.url) ? '' : '<a href="' + obj.url + '">pdf</a>'
